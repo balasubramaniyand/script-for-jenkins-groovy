@@ -1,8 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage ( 'Pull Code From Github'){
+        steps{
+           git 'https://github.com/balasubramaniyand/k8sproject.git'
+        }
+    }
+stage('docker'){
+    steps {
+        sh' docker images'
+    }
+}
 stage('Build the Dcoker images'){
     steps{
-        sh' sudo docker build -t newimage /var/lib/jenkins/workspace/bala pipeline'
-        sh 'sudo docker tag newimage balasubramaniyand/newimages:lastest'
-        sh 'sudo docker tag  newimage balasubramaniyand/newimage:${BUILD_NUMBER}'
+        sh' sudo docker build -t balasubramaniyand/07:latest /var/lib/jenkins/workspace/bala'
+        sh 'sudo docker tag  balasubramaniyand/07:latest balasubramaniyand/07 ${BUILD_NUMBER}'
     }
     }
     
+}
+}
