@@ -1,0 +1,6 @@
+stage('Push the Docker image') {
+            steps {
+                sh 'sudo docker image push balasubramaniyand/love:latest'
+                sh 'sudo docker image push balasubramaniyand/love:${BUILD_NUMBER}'
+            }
+        }
