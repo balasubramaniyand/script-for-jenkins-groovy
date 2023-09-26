@@ -1,4 +1,4 @@
-#stage('Build the Dcoker images'){
+stage('Build the Dcoker images'){
     steps{
         sh' sudo docker build -t newimage /var/lib/jenkins/workspace/bala'
         sh 'sudo docker tag newimage balasubramaniyand/newimages:lastest'
