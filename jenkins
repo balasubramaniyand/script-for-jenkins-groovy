@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages {
+        stage ( 'Pull Code From Github'){
+        steps{
+           git 'https://github.com/balasubramaniyand/k8sproject.git'
+        }
+    }
+}
+}
