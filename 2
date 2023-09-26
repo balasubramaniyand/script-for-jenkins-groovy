@@ -13,7 +13,7 @@ stage('docker'){
 }
 stage('Build the Dcoker images'){
     steps{
-        sh' sudo docker build -t balasubramaniyand/07:latest /var/lib/jenkins/workspace/love'
+        sh' sudo docker build -t balasubramaniyand/love:latest /var/lib/jenkins/workspace/love'
         sh 'sudo docker tag  balasubramaniyand/love:latest balasubramaniyand/love ${BUILD_NUMBER}'
     }
     }
