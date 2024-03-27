@@ -1,0 +1,50 @@
+[INFO] --- spring-boot-maven-plugin:2.6.6:repackage (repackage) @ supportfirst-api-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41.318 s
+[INFO] Finished at: 2024-03-27T22:04:29+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Execute JAR)
+[Pipeline] sh
++ nohup java -jar /var/lib/jeenkins/workspace/gitlab/target/supportfrist-0.0.1.war
+Error: Unable to access jarfile /var/lib/jeenkins/workspace/gitlab/target/supportfrist-0.0.1.war
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+pipeline {
+    agent any 
+    stages {
+        stage('Clone') {
+            steps {
+                git credentialsId: 'gitlabaccess', url: 'https://pexgit.growipx.com/supportfirst/supportfirst-api-service.git', branch: 'main'
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                script {
+                    def mvnHome = tool name: 'Maven', type: 'maven'
+                    sh "${mvnHome}/bin/mvn clean package"
+                
+                }
+            }
+        }
+        
+    
+    stage('Execute JAR') {
+            steps {
+                sh 'nohup java -jar /var/lib/jeenkins/workspace/gitlab/target/supportfrist-0.0.1.war & '
+                
+        }
+    }
+    } 
+}    
