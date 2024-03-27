@@ -1,0 +1,4 @@
+Started by user unknown or anonymous
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+WorkflowScript: 22: expecting ''', found '\n' @ line 22, column 188.
+   ') // Get latest WAR file name
